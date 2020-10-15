@@ -8,6 +8,8 @@ git add 支援萬用字元 (*)，這個範例是一次 git add 所有 .c 檔
 git commit 的一些常用變化
 　　git commit 也有許多可選參數，以下列出幾個常用的
 
+git remote add origin <remote 網址>
+
 　1. git commit -a
 非常好用的指令。如果變更都只是修改檔案的話 (刪除、新增檔案不算)，可以使用這個方式省略 git add 的步驟，直接提交變更
 　2. git commit --amend
@@ -21,4 +23,8 @@ git commit 的一些常用變化
 
 git commit -a -m "commit"
 
+git push -u origin master
+
 git push
+
+https://blog.techbridge.cc/2018/01/17/
