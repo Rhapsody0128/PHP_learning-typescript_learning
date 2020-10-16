@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+  <script src="zz.php"></script>
+<form action="zz.php" method="get">
+    <input type="text" name="zz"  value="">
+    <input type="number" name="zza"  value="none">
+    <input type="submit">
+</form>
+</body>
+<script>
+// 定義 Person 建構子
+var Person = function(firstName) {
+  this.firstName = firstName;
+};
+
+// 加入兩個方法到 Person.prototype
+Person.prototype.walk = function(){
+  console.log("I am walking!");
+};
+
+Person.prototype.sayHello = function(){
+  console.log("Hello, I'm " + this.firstName);
+};
+
+// 定義 Student 建構子
+function Student(firstName, subject) {
+  // Call the parent constructor, making sure (using call)
+  // that "this" is set correctly during the call
+  Person.call(this, firstName);
+
+  // Initialize our Student-specific properties
+  this.subject = subject;
+}
+
+// 建立 Student.prototype 物件來繼承 Person.prototype。
+// 注意: 在此處經常見的錯誤是使用 "new Person()" 來建立
+// Student.prototype。不正確的原因許多個，尤其是
+// 我們沒有給予 Person 任何 "firstName" 的參數。
+// 呼叫 Person 的正確位置在上方，也就是我們呼叫 Student 
+// 的地方。
+Student.prototype = Object.create(Person.prototype); // 詳見以下說明
+
+// 設定 "constructor" 屬性參考 Student
+Student.prototype.constructor = Student;
+
+// 替換 "sayHello" 方法
+Student.prototype.sayHello = function(){
+  console.log("Hello, I'm " + this.firstName + ". I'm studying "
+              + this.subject + ".");
+};
+
+// 加入"sayGoodBye" 方法
+Student.prototype.sayGoodBye = function(){
+  console.log("Goodbye!");
+};
+
+// 範例用法:
+var student1 = new Student("Janet", "Applied Physics");
+student1.sayHello();   // "Hello, I'm Janet. I'm studying Applied Physics."
+student1.walk();       // "I am walking!"
+student1.sayGoodBye(); // "Goodbye!"
+
+// 檢查 instanceof 可正常運作
+console.log(student1 instanceof Person);  // true 
+console.log(student1 instanceof Student); // true
+</script>
+</html>
