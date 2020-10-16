@@ -7,7 +7,7 @@ type worldStatus = {
   marryRate:Number
 }
 // ---人參數
-type person = {
+type person =  {
   name:string
   gender:gender
   hasMarry:boolean
@@ -46,10 +46,10 @@ let Eve : person = {
 //   })
 // }
 
-let TimeFlow = setInterval(() => {
-  let random = function (ground:number) { return Math.floor(Math.random()*100+ground)}
-  getOlder()
-  if(random(0) > 20){
+// let TimeFlow = setInterval(() => {
+//   let random = function (ground:number) { return Math.floor(Math.random()*100+ground)}
+//   getOlder()
+//   if(random(0) > 20){
     
-  }
-}, 1000);
+//   }
+// }, 1000);
