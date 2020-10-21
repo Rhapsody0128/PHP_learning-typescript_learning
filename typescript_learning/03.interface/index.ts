@@ -32,7 +32,6 @@ type f = d & e
 
 // function overload
 
-
 // function   addition(p1:number,p2:number){
 //   return p1 + p2
 // }
@@ -91,6 +90,9 @@ type T = number
 interface I {
   a:string;
 }
+interface I {
+  c:boolean
+}
 interface K {
   b:number;
 }
@@ -104,10 +106,7 @@ let asd :U = {
   c:true
 }
 
-interface I {
-  c:boolean
-}
 
 // ---type 和 interface定義型態差別之我論---
 // type(類別)屬於靜態類別，來定義固定式條目，事後盡量不要做修改的，可以使用列舉(Enum)和元組(Tuple)，合併邏輯為new type = old + old
-// interface(介面)屬於動態類別，可以定義浮動式條目，事後可以修改和合併，無法使用列舉和元組，但可以用擴充(Extends)，合併邏輯為new interface = old merge old
+// interface(介面)屬於動態類別，可以定義浮動式條目，事後可以修改和合併，無法使用列舉和元組，但可以用擴充(Extends)，合併邏輯為new interface merge (old, old)
