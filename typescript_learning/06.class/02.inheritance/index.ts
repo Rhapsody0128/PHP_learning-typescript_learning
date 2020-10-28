@@ -5,17 +5,18 @@
 // private 模式時：P 與 M 僅僅只能在當前類別 C 內部使用
 // protected 模式時： P 與 M 除了當前類別 C 內部使用外，繼承 C 的子類別也可以使用
 
-enum TransortTicketType {
+enum TransportTicketType {
   Train,
   MRT,
   Plane,
   Bus
 }
+
 type TimeFormat = [number,number,number]
 
 class TicketSystem {
   constructor(
-    private type:TransortTicketType,
+    private type:TransportTicketType,
     protected startingPoint:string,
     protected destination:string,
     private departureTime:Date,
@@ -35,7 +36,7 @@ class TicketSystem {
   }
 
   public getTickerInfo(){
-    const ticketName = TransortTicketType[this.type]
+    const ticketName = TransportTicketType[this.type]
     const arrivalTime = this.deriveArrivalTime();
 
     console.log(`
@@ -55,6 +56,20 @@ type TrainStaion = {
 }
 
 class TrainTicket extends TicketSystem{
+
+  constructor(
+    startingPoint:string,
+    destination:string,
+    departureTime:Date
+  ){
+    super(
+      // super之我流解釋:若class B 繼承自 class A ，在class B創造(new)的初始時，並未帶有class A的constructor屬性，會導致無法使用'this'的寫法，導致Error，故用super可以在constructor之前會先引入super(父層)的數值。
+      TransportTicketType.Train,
+      startingPoint,
+      destination,
+      departureTime,
+    );
+  }
   private stops :string [] = [
     'pingtung',
     'Kaohsiung',
@@ -131,5 +146,10 @@ class TrainTicket extends TicketSystem{
 // E.e('a')
 // E.f('a')
 
-
+const trainTicker = new TrainTicket(
+  'Tainan',
+  'Hsinchu',
+  new Date(2020,10,28,9,0,0)
+)
+trainTicker.getTickerInfo()
 
