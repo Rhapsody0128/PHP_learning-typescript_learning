@@ -34,3 +34,10 @@ var TicketSystem = /** @class */ (function () {
 var TI = new TicketSystem(TransortTicketType.Bus, 'Taipei', 'Sinjou', new Date(2020, 10, 27, 0, 0));
 TI.getTickerInfo();
 // console.log(TI);
+
+let a = ['b','c']
+
+for(let i = 0 ;i<5;i++){
+    a[i] = new TicketSystem('aa')
+}
+console.log(a);

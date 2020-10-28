@@ -112,24 +112,24 @@ class TrainTicket extends TicketSystem{
 }
 
 // 繼承
-class C {
-  public a:string='a';
-  private b:string='b';
-  protected c:string='c';
+// class C {
+//   public a:string='a';
+//   private b:string='b';
+//   protected c:string='c';
 
-  public d(value:string){console.log('object')};
-  private e(value:string){console.log('object')};
-  protected f(value:string){console.log('object')} ;
-}
-class D extends C {}
-let E = new D 
+//   public d(value:string){console.log('object')};
+//   private e(value:string){console.log('object')};
+//   protected f(value:string){console.log('object')} ;
+// }
+// class D extends C {}
+// let E = new D 
 
-console.log(E.a);
-console.log(E.b);
-console.log(E.c);
-E.d('a')
-E.e('a')
-E.f('a')
+// console.log(E.a);
+// console.log(E.b);
+// console.log(E.c);
+// E.d('a')
+// E.e('a')
+// E.f('a')
 
 
 
