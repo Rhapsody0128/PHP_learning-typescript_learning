@@ -28,12 +28,11 @@ type UserInfo1 = {
   [prop: string]: string;
 }
 
-// 類型 'Date' 的屬性 'birth' 不可指派給字串索引類型 'string'
 // type UserInfo2 = {
 //   name: string,
 //   birth: Date,
 //   [prop: string]: string;
-// }
+// } ! 類型 'Date' 的屬性 'birth' 不可指派給字串索引類型 'string'
 
 // ---readonly
 
@@ -45,8 +44,8 @@ const y :z = {
   a:6,
   b:7
 }
-// y.a = 0
-// 會被阻止
+// y.a = 0 ! 唯獨，修改會被阻止
+
 y.b = 0
 
 // -----Hybrid Type Interface

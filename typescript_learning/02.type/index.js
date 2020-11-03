@@ -37,27 +37,34 @@ var isNumber;
 var isString;
 var isArray;
 // Type Guard 限制型別被推論到的可能性 —— 來 Bypass unknown 型別原先的限制 —— 不能被指派到被註記到的任意型別（除了 unknown 與 any）的變數
-// isNumber = isUnknown
+// isNumber = isUnknown ! unknown類別不能指派給number
 if (typeof isUnknown == 'number') {
     isNumber = isUnknown;
+    // 但在條件式底下就可以
 }
 isString = isUnknown;
 isArray = isUnknown;
-// isAny.greets('asdas')
-// isAny.aaa
-// isUnknown.push('asdas')
-// isUnknown.aaa
+isAny.greets('asdas');
+isAny.aaa;
+// isUnknown.greets('asdas') ! nuknow型別不能型別不能呼叫函式
+// isUnknown.aaa ! nuknow型別不能呼叫值
 var unknownObject = {
     hello: 'hi~',
     response: function (content) { console.log(content); }
 };
-// unknownObject.hello
-// unknownObject.response('hi')
+// unknownObject.hello ! nuknow型別不能呼叫值
+// unknownObject.response('hi') ! nuknow型別不能型別不能呼叫函式
 unknownObject.hello;
 unknownObject.hello;
 var number = '123456';
-// parseInt(number,10)
+// parseInt(number,10) ! 這裡number已經被指派為string了
 if (typeof number == 'string') {
     parseInt(number, 10);
     console.log(parseInt(number, 10));
 }
+var k1;
+var k2;
+var k3;
+var k4;
+var k5;
+var k6;

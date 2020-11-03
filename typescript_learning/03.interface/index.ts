@@ -4,9 +4,9 @@ interface t2 {           b:number ; c:boolean}
 interface t3 {a:string ;            c:string}
 
 interface t12 extends t1,t2 {}
-// interface t23 extends t3,t2 {} - 衝突
+// interface t23 extends t3,t2 {} - ! c型別衝突
 interface t13 extends t1,t3 {}
-// interface t123 extends t1,t2,t3 {} - 衝突
+// interface t123 extends t1,t2,t3 {} - c型別衝突
 
 // 以下兩者呈現結果一樣，但意義差很多
 interface a {a:string}
@@ -32,6 +32,8 @@ type f = d & e
 
 // function overload
 
+// 同個function不同代數有不同處理methods 稱為overload
+
 // function   addition(p1:number,p2:number){
 //   return p1 + p2
 // }
@@ -39,6 +41,8 @@ type f = d & e
 //   return parseInt(p1) + parseInt(p2)
 // }
 
+
+// 正確寫法應該為下
 interface AddOperation {
   addition(p1:number,p2:number):number
   addition(p1:string,p2:string):number
@@ -82,9 +86,9 @@ interface AddOperation3{
 
 // const z:AddOperation3 = {
 //   add(p1:number ,p2:number){
-//     return p1
+//     return p1 
 //   }
-// }
+// } ! 雖然符合AddOperation3 第二個add medthods 但第一個不符合故還是會報型別錯誤
 
 type T = number
 interface I {

@@ -21,3 +21,6 @@ var i = function (p1) {
 };
 console.log(i(1, 2, 3));
 console.log(i([1, 2, 3]));
+// 若想要過濾出純原始型別的值的話，使用 typeof 操作子
+// 若想要過濾出廣義物件型別或類別(Class)的值的話，使用 instanceof 判斷操作子，並填上屬於該物件型別所屬的類別
+// 其他方式，譬如 Array.isArray 可以檢測陣列

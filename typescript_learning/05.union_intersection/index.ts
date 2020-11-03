@@ -36,7 +36,7 @@ let d :d | c={
 // 只要少了一個屬性就會出錯，完全符合 AND 邏輯的真諦
 
 type f = string & number
-// type f = never
+// type f = never 
 
 // never is a subtype of and assignable to every type.
 

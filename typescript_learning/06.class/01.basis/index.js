@@ -28,7 +28,7 @@ var CrashMachine = /** @class */ (function () {
     // private users: TUserAccount[] = [
     //   {account:'gary', password:'830128',money:18510},
     //   {account:'tina', password:'11123',money:18510},
-    //   {account:'gary', password:'zxcczsdf',money:213124}
+    //   {account:'jack', password:'zxcczsdf',money:213124}
     // ];
     function CrashMachine(users) {
         this.users = users;
@@ -91,8 +91,6 @@ printAccountInfo(machine.currentUser);
 machine.signOut();
 console.log('登出');
 printAccountInfo(machine.currentUser);
-machine.users.account = 'asdas';
-console.log(machine.users.account);
 // 存取修飾子總共分為三種模式：public、private 以及 protected
 // 若宣告某類別 C，則裡面的成員變數 P 或成員方法 M 被註記為：
 // public 模式時：P 與 M 可以任意在類別內外以及繼承 C 的子類別使用

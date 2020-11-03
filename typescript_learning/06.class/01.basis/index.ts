@@ -49,7 +49,7 @@ type TUserAccount= {
 //   singIn(account:string,password:string):void;
 
 //   signOut():void;
-// }
+// } ! 雖然可運行但沒有系統規劃，若資料龐大後需要增改刪查很不方便
 
 interface AccountSystem {
 
@@ -77,7 +77,7 @@ class CrashMachine implements ICrashMachine {
   // private users: TUserAccount[] = [
   //   {account:'gary', password:'830128',money:18510},
   //   {account:'tina', password:'11123',money:18510},
-  //   {account:'gary', password:'zxcczsdf',money:213124}
+  //   {account:'jack', password:'zxcczsdf',money:213124}
   // ];
 
   constructor(public users:TUserAccount[]){}

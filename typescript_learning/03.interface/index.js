@@ -19,5 +19,12 @@ var implementAddition = {
         throw new Error("Parameter `p1`and`p2`should only accept both`number`type or `string`type.");
     }
 };
-var a = implementAddition.addition('aa', 'sad');
-console.log(a);
+;
+var asd = {
+    a: 'aa',
+    b: 1801,
+    c: true
+};
+// ---type 和 interface定義型態差別之我論---
+// type(類別)屬於靜態類別，來定義固定式條目，事後盡量不要做修改的，可以使用列舉(Enum)和元組(Tuple)，合併邏輯為new type = old + old
+// interface(介面)屬於動態類別，可以定義浮動式條目，事後可以修改和合併，無法使用列舉和元組，但可以用擴充(Extends)，合併邏輯為new interface merge (old, old)

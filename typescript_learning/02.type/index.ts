@@ -69,16 +69,17 @@ let isNumber:number
 let isString:string
 let isArray:string[]
 // Type Guard 限制型別被推論到的可能性 —— 來 Bypass unknown 型別原先的限制 —— 不能被指派到被註記到的任意型別（除了 unknown 與 any）的變數
-// isNumber = isUnknown
+// isNumber = isUnknown ! unknown類別不能指派給number
 if(typeof isUnknown == 'number'){
   isNumber = isUnknown
+  // 但在條件式底下就可以
 }
 isString = <string>isUnknown
 isArray = isUnknown as string[]
-// isAny.greets('asdas')
-// isAny.aaa
-// isUnknown.push('asdas')
-// isUnknown.aaa
+isAny.greets('asdas')
+isAny.aaa
+// isUnknown.greets('asdas') ! nuknow型別不能型別不能呼叫函式
+// isUnknown.aaa ! nuknow型別不能呼叫值
 
 let unknownObject :unknown = {
   hello:'hi~',
@@ -89,14 +90,14 @@ type person = {
   response:(content:string) =>void
 }
 
-// unknownObject.hello
-// unknownObject.response('hi')
+// unknownObject.hello ! nuknow型別不能呼叫值
+// unknownObject.response('hi') ! nuknow型別不能型別不能呼叫函式
 
 (<person>unknownObject).hello;
 (unknownObject as person).hello
 
 let number:unknown = '123456'
-// parseInt(number,10)
+// parseInt(number,10) ! 這裡number已經被指派為string了
 if(typeof number == 'string'){
   parseInt(number,10)
   console.log(parseInt(number,10));

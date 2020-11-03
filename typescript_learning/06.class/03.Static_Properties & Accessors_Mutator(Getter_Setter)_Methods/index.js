@@ -58,6 +58,11 @@ var CircleGeometryV2 = /** @class */ (function () {
         get: function () {
             return this.PI * (Math.pow(this.radius, 2));
         },
+        // get area2(value:number){
+        //   return this.PI * (this.radius **2)
+        // } !get Accessor不能用任何參數
+        // get area3(){}
+        // !get Accessor不能沒回傳值
         set: function (value) {
             this.radius = Math.pow((value / this.PI), 0.5);
         },

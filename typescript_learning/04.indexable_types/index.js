@@ -7,8 +7,7 @@ var y = {
     a: 6,
     b: 7
 };
-// y.a = 0
-// 會被阻止
+// y.a = 0 ! 唯獨，修改會被阻止
 y.b = 0;
 function createCounter() {
     var value;
