@@ -41,4 +41,16 @@ class LazySingletonPerson{
     return this.Instance
   }
 }
-console.log(LazySingletonPerson.getInstance());
+
+class LazySingletonC{
+  private constructor(){}
+
+  private static Instance:LazySingletonC | null = null;
+
+  static getInstance():LazySingletonC{
+    if(this.Instance === null){
+      this.Instance = new LazySingletonC;
+    }
+    return this.getInstance;
+  }
+}

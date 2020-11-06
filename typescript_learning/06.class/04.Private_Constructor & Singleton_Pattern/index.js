@@ -36,4 +36,15 @@ var LazySingletonPerson = /** @class */ (function () {
     LazySingletonPerson.Instance = null;
     return LazySingletonPerson;
 }());
-console.log(LazySingletonPerson.getInstance());
+var LazySingletonC = /** @class */ (function () {
+    function LazySingletonC() {
+    }
+    LazySingletonC.getInstance = function () {
+        if (this.Instance === null) {
+            this.Instance = new LazySingletonC;
+        }
+        return this.getInstance;
+    };
+    LazySingletonC.Instance = null;
+    return LazySingletonC;
+}());
