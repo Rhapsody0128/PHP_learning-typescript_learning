@@ -18,11 +18,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var role_1 = __importDefault(require("./role"));
 var character_1 = __importDefault(require("./character"));
-var meleeAttack_1 = __importDefault(require("../abilities/meleeAttack"));
+// import MeleeAttack from '../abilities/meleeAttack';
+var basicSwords_1 = __importDefault(require("../weapons/basicSwords"));
 var Swordsman = /** @class */ (function (_super) {
     __extends(Swordsman, _super);
     function Swordsman(name) {
-        return _super.call(this, name, role_1.default.Swordsman, new meleeAttack_1.default) || this;
+        return _super.call(this, name, role_1.default.Swordsman, new basicSwords_1.default) || this;
     }
     return Swordsman;
 }(character_1.default));

@@ -5,11 +5,40 @@ import Character from './characters/character'
 
 import Swordsman from './characters/swordsman'
 import Warlock from './characters/warlock'
+import MeleeAttack from './abilities/meleeAttack.js';
+import StabAttack from './abilities/stabAttack.js';
+
+import BasicSwords from './weapons/basicSwords'
+import BasicWand from './weapons/basicWand'
+import Dagger from './weapons/dagger'
 
 const Gary = new Swordsman('Gary');
 const Jack = new Warlock('Jack');
 
 Gary.introduce()
 Jack.introduce()
+
+
+
+
+// MeleeAttack
 Gary.attack(Jack)
 Jack.attack(Gary)
+
+Gary.switchAttackStrategy(new StabAttack())
+
+Gary.attack(Jack)
+
+Gary.equip(new BasicSwords())
+
+Gary.attack(Gary)
+
+Jack.equip(new Dagger())
+
+Jack.attack(Gary)
+
+try{
+  Gary.equip(new BasicWand())
+}catch(err){
+  console.log(err);
+}

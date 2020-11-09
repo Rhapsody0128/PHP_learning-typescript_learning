@@ -18,11 +18,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var role_1 = __importDefault(require("./role"));
 var character_1 = __importDefault(require("./character"));
-var magicAttack_1 = __importDefault(require("../abilities/magicAttack"));
+// import MagicAttack from '../abilities/magicAttack';
+var basicWand_1 = __importDefault(require("../weapons/basicWand"));
 var Swordsman = /** @class */ (function (_super) {
     __extends(Swordsman, _super);
     function Swordsman(name) {
-        return _super.call(this, name, role_1.default.Warlock, new magicAttack_1.default) || this;
+        return _super.call(this, name, role_1.default.Warlock, new basicWand_1.default) || this;
     }
     return Swordsman;
 }(character_1.default));

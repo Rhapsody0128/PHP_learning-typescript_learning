@@ -6,9 +6,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var swordsman_1 = __importDefault(require("./characters/swordsman"));
 var warlock_1 = __importDefault(require("./characters/warlock"));
+var stabAttack_js_1 = __importDefault(require("./abilities/stabAttack.js"));
+var basicSwords_1 = __importDefault(require("./weapons/basicSwords"));
+var basicWand_1 = __importDefault(require("./weapons/basicWand"));
+var dagger_1 = __importDefault(require("./weapons/dagger"));
 var Gary = new swordsman_1.default('Gary');
 var Jack = new warlock_1.default('Jack');
 Gary.introduce();
 Jack.introduce();
+// MeleeAttack
 Gary.attack(Jack);
 Jack.attack(Gary);
+Gary.switchAttackStrategy(new stabAttack_js_1.default());
+Gary.attack(Jack);
+Gary.equip(new basicSwords_1.default());
+Gary.attack(Gary);
+Jack.equip(new dagger_1.default());
+Jack.attack(Gary);
+try {
+    Gary.equip(new basicWand_1.default());
+}
+catch (err) {
+    console.log(err);
+}
