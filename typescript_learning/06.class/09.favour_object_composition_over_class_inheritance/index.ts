@@ -74,5 +74,3 @@ console.log(`長方形的邊長${rectWindow.circumference()}`);
 let circleWindow = new MyWindow(new Circle(10))
 console.log(`圓形的面積${circleWindow.area()}`);
 console.log(`圓形的周長${circleWindow.circumference()}`);
-
-
