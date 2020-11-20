@@ -12,15 +12,16 @@
     //      2.NodeJS 實踐 CommonJS 規範：跟 CommonJS 差別在於 —— NodeJS 是 module.exports 作為 exports 相關功能，但又比 CommonJS 的規則稍微複雜些；通常 NodeJS 的開發者應該會習慣看到這樣的語法。
     //      3.非同步模組定義檔 Asynchronous Module Definition (AMD)：由 CommonJS 延伸出來的，用的是 define 關鍵字；如其名，在瀏覽器載入模組時是非同步載入，而 RequireJS 就是對於 AMD 的實踐。
     //      4.ES6 模組載入/輸出語法（ECMAScript Import & Export）：大致上寫過各種前端東西的讀者應該熟悉這種模式。
-    "lib": ["ES2016"],                             /* Specify library files to be included in the compilation. */
+    "lib": ["ES2016","DOM"],                             /* Specify library files to be included in the compilation. */
     //    lib 選項提供的功能，就是負責補足 —— 在 TypeScript 裡所謂的 Declaration Group —— 宣告性群組的東西。
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
     // "checkJs": true,                       /* Report errors in .js files. */
     // "jsx": "preserve",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
     // "declaration": true,                   /* Generates corresponding '.d.ts' file. */
     // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
-    // "sourceMap": true,                     /* Generates corresponding '.map' file. */
-    "outFile": "build.js",                       /* Concatenate and emit output to single file. */
+    "sourceMap": true,                     /* Generates corresponding '.map' file. */
+    //    所謂的 Source Map —— 代表的是連結編譯 TypeScript 檔案後與編譯前的關聯檔。
+    "outFile": "./build.js",                       /* Concatenate and emit output to single file. */
     //    打包成單個檔案，潛在條件:tsconfig.json 中的 module 模組規範的選項只能為 amd 或 system 這兩種
     "outDir": "./build",                        /* Redirect output structure to the directory. */
     //    專案被編譯過後輸出的位置
@@ -33,7 +34,7 @@
     // "composite": true,                     /* Enable project compilation */
     // "tsBuildInfoFile": "./",               /* Specify file to store incremental compilation information */
     // "removeComments": true,                /* Do not emit comments to output. */
-    "noEmit": true,                        /* Do not emit outputs. */
+    // "noEmit": true,                        /* Do not emit outputs. */
     //    無論如何，TypeScript 編譯器不會輸出任何東西
     // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
     // "downlevelIteration": true,            /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
@@ -41,19 +42,30 @@
 
     /* Strict Type-Checking Options */
     "strict": true,                           /* Enable all strict type-checking options. */
-    // "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
-    // "strictNullChecks": true,              /* Enable strict null checks. */
-    // "strictFunctionTypes": true,           /* Enable strict checking of function types. */
-    // "strictBindCallApply": true,           /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
-    // "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */
-    // "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
+    //    型別推論檢測相關設定 —— strict系列
+    "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
+    //    若選為false，會忽略變數本身為 Any Types 的狀態 (test.ts的範例可以build出來)
+    "strictNullChecks": true,              /* Enable strict null checks. */
+    //    若選為false，會忽略變數本身為 Nullable Types 的狀態 (test.ts的範例可以build出來)
+    "strictFunctionTypes": true,           /* Enable strict checking of function types. */
+    //    若選為false，會忽略 Function Types 的型別
+    "strictBindCallApply": true,           /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
+    //    若選為false，會忽略call、apply、bind方法的型別
+    "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */
+    //     選為false，會忽略原型初始化的型別
+    "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
+    //     this 如果被 TypeScript 判定為 any 型態時就會發出警告
     // "alwaysStrict": true,                  /* Parse in strict mode and emit "use strict" for each source file. */
 
     /* Additional Checks */
-    // "noUnusedLocals": true,                /* Report errors on unused locals. */
-    // "noUnusedParameters": true,            /* Report errors on unused parameters. */
-    // "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
+    "noUnusedLocals": true,                /* Report errors on unused locals. */
+    //    如果有變數沒有被使用就會出現警告
+    "noUnusedParameters": true,            /* Report errors on unused parameters. */
+    //    如果函式裡的參數沒有被使用，就會發出警告
+    "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
+    //    如果函式裡有出現路徑是沒有回傳值就會發出警告
     // "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
+    //      每個 switch 裡面的 case 判斷敘述式一定要有 break 語法，不能有 case 沒有 break 以至於會執行到下一個 case
 
     /* Module Resolution Options */
     // "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
