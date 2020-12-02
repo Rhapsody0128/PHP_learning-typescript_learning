@@ -105,3 +105,7 @@ class Cparent<T,U>{
     public member2:U
   ){}
 }
+
+class Cchild1<T,U> extends Cparent<T,U>{}
+class Cchild2<T,U = T> extends Cparent<T,U>{}
+class Cchild3<T,U extends T> extends Cparent<T,U>{}

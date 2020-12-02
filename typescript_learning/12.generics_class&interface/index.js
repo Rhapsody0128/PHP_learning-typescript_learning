@@ -72,3 +72,24 @@ var Cparent = /** @class */ (function () {
     }
     return Cparent;
 }());
+var Cchild1 = /** @class */ (function (_super) {
+    __extends(Cchild1, _super);
+    function Cchild1() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return Cchild1;
+}(Cparent));
+var Cchild2 = /** @class */ (function (_super) {
+    __extends(Cchild2, _super);
+    function Cchild2() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return Cchild2;
+}(Cparent));
+var Cchild3 = /** @class */ (function (_super) {
+    __extends(Cchild3, _super);
+    function Cchild3() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return Cchild3;
+}(Cparent));
