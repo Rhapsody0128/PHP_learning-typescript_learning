@@ -255,3 +255,12 @@ traverseElements<number>(
     console.log(`Index ${index} - Value ${el}`);
   }
 )
+
+// 泛用型別的妙處在於，編譯器可以直接預測你必須要填入的參數之型別
+// 泛用型別可以推論未來的型別使用的可能性
+
+// 泛用函式的宣告
+
+// function F<TP1,TP2>(){}
+
+// function E<TP1,Tp2>(parm:TPany1):TPany2{}
