@@ -109,3 +109,122 @@ class Cparent<T,U>{
 class Cchild1<T,U> extends Cparent<T,U>{}
 class Cchild2<T,U = T> extends Cparent<T,U>{}
 class Cchild3<T,U extends T> extends Cparent<T,U>{}
+
+// class MyLinkedList implements LinkedListSec<T>{} ! 單純implements 會被 TS 警告內容物不足
+
+// class MyGenericLinkedList<T> implements LinkedListSec<T>{} ! 單純implements 會被 TS 警告內容物不足
+
+class GenericLinkedListNode<T> implements LinkedListNodeSec<T>{
+  public next:LinkedListNodeSec<T>|null = null
+  constructor(public value:T){}
+}
+
+class GenericLinkedList<T> implements LinkedListSec<T>{
+  public head:LinkedListNodeSec<T>|null = null;
+  public length(){
+    if(this.head ===null) return 0
+
+    let count = 0
+    let currentNode:LinkedListNodeSec<T>|null=this.head
+    while(currentNode!==null){
+      currentNode = currentNode.next;
+      // 注意上面的currentNode型別不再是上面宣稱的LinkedListNodeSec<T>|null，而是LinkedListNodeSec<T>，因為在while的判斷已經把null篩選掉了，但currentNode.next有可能為null
+      count++
+    }
+    return count;
+  }
+  public at(index:number):LinkedListNodeSec<T>|null{
+    const length=this.length()
+    // 如果長度小於index則無條件視為out of bound，直接丟出ERROR
+    // index從0開始計算，跟陣列概念一樣:
+    //  長度為0的鏈結串列index==0必丟出ERROR
+    //  長度為3的鏈結串列index==2為最後一個值
+    //  但3以上必丟出ERROR
+    if(index>=length) throw new Error('Index out of bound');
+
+    let currentIndex = 0
+    let currentNode = this.head as LinkedListNodeSec<T>;
+    while(currentIndex!==index){
+      currentNode = currentNode.next as LinkedListNodeSec<T>;
+      currentIndex++
+    }
+    return currentNode
+  }
+  public insert(index:number,value:T){
+    const length = this.length();
+    const newNode = new GenericLinkedListNode(value)
+
+    // 如果長度小於index就丟出錯誤
+    if(length<index) throw new Error('Index out of bound')
+
+    // 如果剛好等於index值，代表要插入新的節點
+    else if(length ===index){
+      if(index===0){
+        this.head = newNode;
+      }else{
+        const node = this.at(index-1)as LinkedListNodeSec<T>;
+        node.next = newNode
+      }
+    }
+    
+    // 長度大於index值，就代表要從中插入新的LinkedListNode
+    else{
+      if(index===0){
+        const originalHead = this.head;
+        this.head =  newNode;
+        this.head.next = originalHead;
+      }else{
+        const prevNode=  this.at(index-1) as LinkedListNodeSec<T>;
+        const originalNode = prevNode.next as LinkedListNodeSec<T>
+        prevNode.next = newNode
+        newNode.next = originalNode
+      }
+    }
+  }
+  public remove(index:number):void{
+    throw new Error("Method not implemented")
+  }
+  public getInfo(){
+    let currentNode = this.head;
+    let currentIndex = 0
+
+    while (currentNode !== null){
+      console.log(`Index ${currentIndex}:${currentNode.value}`);
+      currentNode = currentNode.next;
+      currentIndex++
+    }
+  }
+}
+
+
+const l = new GenericLinkedList<number>()
+
+l.insert(0,12)
+l.insert(1,56)
+l.insert(2,78)
+l.insert(1,34)
+l.getInfo();
+
+// 檢視鏈結串列中index=0~3的元素之值:
+// 由於我們確定 l.at(index) where index = 0~3
+// 100%絕對是LinkedListNode<number>，而非null，
+// 因此採取顯性註記的動作
+console.log((l.at(0) as LinkedListNodeSec<number>).value);
+console.log((l.at(1) as LinkedListNodeSec<number>).value);
+console.log((l.at(2) as LinkedListNodeSec<number>).value);
+console.log((l.at(3) as LinkedListNodeSec<number>).value);
+
+try{
+  l.at(4)
+}catch(err){
+  console.log('Out of bound error caught');
+}
+
+// 判斷註記型別的時機，若型別部分你有 100% 信心認為是某特定型別，你應該選擇型別積極註記的動作，不需要擔心會不會造成型別壟斷的行為。
+
+// 建立GenericLinkedList物件但不指派型別直到型別參數
+const unspecifiedTypeParamLinkedList = new GenericLinkedList();
+// Ts為推論為unspecifiedTypeParamLinkedList<unknown>
+
+type Tany = string|number|boolean
+const specifiedTypeParamLinkedList = new GenericLinkedList<Tany>();
