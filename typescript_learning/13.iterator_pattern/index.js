@@ -198,3 +198,4 @@ var valueCumulation2 = [];
 var aBTreeIter = aBTree.createIterator();
 foreach(aBTreeIter, function (v) { return valueCumulation2.push(v); });
 console.log(valueCumulation2);
+// MyArray<T>、IterableLinkedList<T> 以及 BinaryTree<T> 這三種看似不可能用同個介面巡訪的方式 —— 藉由迭代器模式統一下來。
