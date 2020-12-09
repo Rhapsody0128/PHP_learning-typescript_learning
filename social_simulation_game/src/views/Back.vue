@@ -1,9 +1,11 @@
 <template lang="pug">
-  #home
-    span(v-text='a')
+  #back
+    span BaCk
 </template>
+
 <script lang="ts">
 import Vue from 'vue'
+
 export default Vue.extend({
   data () {
     return {
