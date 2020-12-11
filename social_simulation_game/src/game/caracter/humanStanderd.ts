@@ -1,5 +1,6 @@
 import {Appearance} from './appearance'
 import { Human } from './human'
+import { OriginalHuman } from './originalHuman'
 import {Gender} from './universal'
 
 export interface HumanStanderd {
@@ -8,6 +9,7 @@ export interface HumanStanderd {
   appearance: Appearance
   name: string
   gender: Gender
-  Dad: Human|null
-  Mon: Human|null
+  Dad: Human|OriginalHuman|string
+  Mom: Human|OriginalHuman|string
+
 }

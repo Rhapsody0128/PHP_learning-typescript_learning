@@ -11,17 +11,19 @@
           td 性別
           td 婚姻
           td 年齡
-          td 父母
           td 人物
+          td 父親
+          td 母親
         tr(v-for="(human,index) in worldHuman" :key="index")
           td {{human.name}}
           td {{human.gender}}
           td {{human.getMarry}}
           td {{human.age}}
-          td {{human.Dad}},{{human.Mom}}
           td 
             human(:data="worldHuman[index]")
-      
+          td {{human.Dad.name}}
+          td {{human.Mom.name}}
+
 </template>
 <script lang="ts">
 import { Human } from '@/game/caracter/human'
@@ -43,7 +45,10 @@ export default Vue.extend({
       this.worldHuman.push(human)
       this.inputName = ''
     },
-    // bornHuman(){}
+    bornHuman() {
+      const child = game.CaracterSystem.prototype.bornHuman('Gary', this.worldHuman[0], this.worldHuman[1])
+      this.worldHuman.push(child)
+    },
   },
 })
 </script>
