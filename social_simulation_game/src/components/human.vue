@@ -1,15 +1,17 @@
 <template lang="pug">
   .human
     .man(v-if="data.gender === '男性'")
-      svg(id='man' data-name='man' width='110px' height="150px")
-        path.manBody(:style="bodyColorStyle" d='M42.15,37.68C66.91,37.26,66.91.42,42.15,0,17.38.42,17.39,37.26,42.15,37.68Z')
-        path.manBody.rightHand(:style="bodyColorStyle" d='M34.13,46.57,11,6.12C7.12-.52-2.81,5.66.76,11.9l23.43,41C27.54,58.78,37.6,52.65,34.13,46.57Z')
-        path.manBody(:style="bodyColorStyle" d='M70.41,56.6v40c0,7.72-11.74,7.33-11.74,0v7h0v40a7.06,7.06,0,0,1-7.06,7.06H32.73a7.07,7.07,0,0,1-7.07-7.06V42.59a40,40,0,0,1,5.7-.2,25.87,25.87,0,0,0,21.57,0h3.35a13.7,13.7,0,0,1,2.39.21v.08A14.14,14.14,0,0,1,70.41,56.6Z')
+      svg(id='man' data-name='man' width="100" height="110")
+        path.body(:style="bodyColorStyle" d='M30.16,27c17.7-.3,17.7-26.7,0-27C12.46.3,12.46,26.7,30.16,27Z')
+        path.body.rightHand(:style="bodyColorStyle" d='M24.46,33.36l-16.6-29C5.06-.44-2,4.06.56,8.46l16.8,29.4C19.66,42.1,26.86,37.7,24.46,33.36Z')
+        path.body(:style="bodyColorStyle" d='M50.46,40.6V69.3c0,5.5-8.4,5.2-8.4,0v5h0V103a5.12,5.12,0,0,1-5.1,5.1H23.46a5.12,5.12,0,0,1-5.1-5.1V30.6a28.08,28.08,0,0,1,4.1-.1,19,19,0,0,0,15.5,0h2.4c.6,0,1.1.1,1.7.1v.1A10,10,0,0,1,50.46,40.6Z')
     .woman(v-if="data.gender === '女性'")
-      svg(id='woman' data-name='woman' width='110px' height="150px")
-        path.womanBody(:style="bodyColorStyle" d='M178.33,290.77l-12.88-18.88,6.16,24.68a7.36,7.36,0,0,1-7.14,9.15H147.29v31.92a7.37,7.37,0,0,1-7.37,7.36H130.1a7.37,7.37,0,0,1-7.36-7.36V305.72H105.55a7.37,7.37,0,0,1-7.14-9.15l14.73-58.91a7.36,7.36,0,0,1,7.14-5.58h3.49a27,27,0,0,0,22.48,0h3.49a6.51,6.51,0,0,1,.77,0c2.33-.28,4.66.83,7,4.22l30.16,45.48C192.15,288.65,182.7,297.34,178.33,290.77Z' transform='translate(-81.48 -187.89)')
-        path.womanBody.rightHand(:style="bodyColorStyle" d='M123.14,235.44,92.34,197.9c-5.17-6.15-14.29,1.93-9.53,7.73L114,243.7C118.5,249.13,127.77,241.08,123.14,235.44Z' transform='translate(-81.48 -187.89)')
-        path.womanBody(:style="bodyColorStyle" d='M135,187.89a19.64,19.64,0,1,0,19.64,19.64A19.64,19.64,0,0,0,135,187.89Z' transform='translate(-81.48 -187.89)')
+      svg(id='woman' data-name='woman' width="100" height="110")
+        path.body(:style="bodyColorStyle" d='M66.6,70.7l-8.9-13,4.2,17a5.31,5.31,0,0,1-4.1,6.2,2.2,2.2,0,0,1-.8.1H45.2v21.9a5.12,5.12,0,0,1-5.1,5.1H33.4a5.12,5.12,0,0,1-5.1-5.1V81H16.5a5.12,5.12,0,0,1-5.1-5.1,5,5,0,0,1,.2-1.2L21.7,34.2a5.13,5.13,0,0,1,4.9-3.8H29a19,19,0,0,0,15.5,0h2.9c1.6-.2,3.2.6,4.8,2.9L72.9,64.6C76.1,69.3,69.6,75.2,66.6,70.7Z' transform='translate(-0.01 0)')
+        path.body.rightHand(:style="bodyColorStyle" d='M28.7,32.7,7.5,6.9C3.9,2.7-2.3,8.2.9,12.2L22.4,38.4C25.5,42.1,31.9,36.6,28.7,32.7Z' transform='translate(-0.01 0)')
+        path.body(:style="bodyColorStyle" d='M36.9,0A13.45,13.45,0,1,0,37,0Z' transform='translate(-0.01 0)')
+
+
 
 
 
@@ -33,44 +35,56 @@ export default Vue.extend({
 .human{
   position relative
   .man{
-    display inline
-    svg{
-      .manBody {
-        transform translate(20%)
-      }
-      .rightHand{
-        transform-origin 28px 48px
-        transform translate(20%) rotate(-30deg)
-      }
+    .body{
+      transform translate(21%,3%)
     }
-  }
-  &:hover{
     .rightHand{
-      animation waving 1s infinite
+      transform-origin 26px 32px
+      transform translate(21%,3%) rotate(0deg)
+    }
+    &:hover{
+      .rightHand{
+        animation manWaving 0.7s infinite
+      }
     }
   }
   .woman{
-    display inline
-    svg{
-      .womanBody{
-        // transform translate(1%)
-      }
+    .body{
+      transform translate(12%,3%)
+    }
+    .rightHand{
+      transform-origin 26px 32px
+      transform translate(12%,3%) rotate(0deg)
+    }
+    &:hover{
       .rightHand{
-        transform-origin 28px 48px
+        animation womanWaving 0.7s infinite
       }
     }
   }
 }
-@keyframes waving {
+
+@keyframes womanWaving {
   0%{
-    transform translate(20%) rotate(-30deg)
+    transform translate(12%,3%) rotate(0deg)
   }
   50%{
-    transform translate(20%) rotate(0deg)
+    transform translate(12%,3%) rotate(-30deg)
   }
   100%{
-    transform translate(20%) rotate(-30deg)
+    transform translate(12%,3%) rotate(0deg)
   }
 }
 
+@keyframes manWaving {
+  0%{
+    transform translate(21%,3%) rotate(0deg)
+  }
+  50%{
+    transform translate(21%,3%) rotate(-30deg)
+  }
+  100%{
+    transform translate(21%,3%) rotate(0deg)
+  }
+}
 </style>
